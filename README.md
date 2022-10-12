@@ -1,3 +1,35 @@
-# nerf_test
-temp
-temp2
+# NERF IMPLEMENTATION for UCSD_CSE274_PROJ
+
+#### before start
+> This is a nerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
+> Hardware: WSL2 on Windows 11, RTX 3070
+
+## RUNNING
+#### create enviroment
+> run   
+`conda env create -f environment.yml`   
+`pip install -r requirements.txt`   
+better check the sanity of the GPU status before going next step, as I developed in WSL2 so the environment setting may be not as universal.
+
+#### prepare your data   
+> we use pretty much same setting as the original paper. run `python img2poses.py $your-images-folder` from [LLFF](https://github.com/Fyusion/LLFF) to get poses from [COLMAP](https://github.com/colmap/colmap). Surely you can directly use [COLMAP](https://github.com/colmap/colmap) by yourself.
+ 
+#### get configuration and run
+> the `config.py` and `config_test.py` provides options for training and testing.   
+I recommend you check the configuration files above first, and simply use my scripts where little has to be changed for your own setting. since this is a simplified implementation, unnecessary options are all muted. After you have changed the setting in the `.sh` file, just run:   
+`bash scripts/quick_train.sh`   
+`bash scripts/quick_test.sh`  
+during training, the checkpoints will be saved in `./ckpts`, training visualization tfevents file in `./logs`   
+during testing, the images, depth images and videos (depends on user preference) will be saved in `./results`   
+
+#### others
+> I have heavy notation everywhere in the code to lessen confusion, and I on purpose removed some features/tuning options for clarity. The remained in the configuration files are those I consider most crucial.   
+Unfortunately the code only supports real scene data, as this is a course project after all, I would like to have things focused.   
+MUCH CREDIT to the second reference for the usage of torchlightning, and I also learnt a lot from the structure of that work.   
+
+### RESULTS FROM UCSD SCENES   
+> I would like to post some real results from UCSD scenes later. to be continued   
+
+### REFERENCE   
+>[nerf](https://github.com/bmild/nerf)   
+[nerf_pl](https://github.com/kwea123/nerf_pl)
