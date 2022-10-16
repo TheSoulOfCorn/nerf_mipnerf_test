@@ -84,7 +84,7 @@ class LLFFDataset(Dataset):
             for j in pts3d[k].image_ids:
                 visibilities[j-1, i] = 1
         # calculate each point's depth w.r.t. each camera
-        # it's the dot product of "points - camera center" and "camera frontal axis"   # tag1
+        # it's the dot product of "points - camera center" and "camera frontal axis"
         # poses[..., 3:4] last col of all shape (25,3,1)
         # poses[..., 2:3] second last col of all shape (25,3,1)
         depths = ((pts_world-poses[..., 3:4])*poses[..., 2:3]).sum(1) # (N_images, N_points)
@@ -115,9 +115,9 @@ class LLFFDataset(Dataset):
         self.poses[..., 3] /= scale_factor
 
         # COLMAP DATA above:
-        # self.focal   f
+        # self.focal   f                    for a whole camera
         # self.image_paths
-        # self.bounds  (n,f)
+        # self.bounds  (n,f)            
         # self.poses   3*4 Rt
 
 
@@ -147,8 +147,8 @@ class LLFFDataset(Dataset):
                 #rays
                 rays_o, rays_d = get_rays(self.directions, c2w) # both (h*w, 3)
 
-                if self.spheric_poses: #360
-                    near = self.bounds.min()
+                if self.spheric_poses: #360  
+                    near = self.bounds.min()  # use global near,far
                     far = self.bounds.max() # may go less (10*near) for a central focus                
                 else:      # need to go NDC for LLFF
                     near, far = 0, 1
@@ -204,6 +204,7 @@ class LLFFDataset(Dataset):
                 c2w = torch.FloatTensor(self.poses[self.val_idx])
             else: # test
                 c2w = torch.FloatTensor(self.poses_test[idx])
+                
 
             rays_o, rays_d = get_rays(self.directions, c2w)
             if not self.spheric_poses:

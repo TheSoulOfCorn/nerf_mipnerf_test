@@ -91,7 +91,8 @@ def create_spiral_poses(radii, focus_depth, n_poses=120):
 
         # the viewing z axis is the vector pointing from the @focus_depth plane
         # to @center
-        z = normalize(center - np.array([0, 0, -focus_depth]))
+        focus = np.array([0, 0, -focus_depth])
+        z = normalize(center - focus)
         
         # compute other axes as in @average_poses
         y_ = np.array([0, 1, 0]) # (3)

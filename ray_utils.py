@@ -30,7 +30,7 @@ def get_rays(directions, c2w):
                ray-tracing-generating-camera-rays/standard-coordinate-systems
 
     Inputs:
-        directions: (H, W, 3) precomputed ray directions in camera coordinate
+        directions: (H, W, 3) precomputed ray directions in 'camera coordinate'
         c2w: (3, 4) transformation matrix from camera coordinate to world coordinate
 
     Outputs:
@@ -38,8 +38,9 @@ def get_rays(directions, c2w):
         rays_d: (H*W, 3), the normalized direction of the rays in world coordinate
     """
     # Rotate ray directions from camera coordinate to the world coordinate
-    rays_d = directions @ c2w[:, :3].T # (H, W, 3) #tag3
-    rays_d /= torch.norm(rays_d, dim=-1, p=1, keepdim=True) # modified! p = 1
+    w2c = c2w[:, :3].T  #(3,3) #Because c2w is orthogonal!  A.T = inv(A)  and this is not for coord! this is for computation
+    rays_d = directions @ w2c # (H, W, 3) #tag3
+    rays_d /= torch.norm(rays_d, dim=-1, keepdim=True)
     # The origin of all rays is the camera origin in world coordinate
     rays_o = c2w[:, 3].expand(rays_d.shape) # (H, W, 3)
 
@@ -64,8 +65,8 @@ def get_ndc_rays(H, W, focal, near, rays_o, rays_d):
         rays_d: (N_rays, 3), the direction of the rays in NDC
     """
     # Shift ray origins to near plane
-    t = -(near + rays_o[...,2]) / rays_d[...,2]
-    rays_o = rays_o + t[...,None] * rays_d
+    t = -(near + rays_o[...,2]) / rays_d[...,2]  #t(N)
+    rays_o = rays_o + t[...,None] * rays_d  # reshape t to (N,1)
 
     # Store some intermediate homogeneous results
     ox_oz = rays_o[...,0] / rays_o[...,2]
