@@ -31,6 +31,9 @@ during testing, the images, depth images and videos (depends on user preference)
 ### RESULTS FROM UCSD SCENES   
 > I would like to post some real results from UCSD scenes later. to be continued   
 
+### FUTURE PLAN
+> experimental tuning options will be configurable, like rays/position options, mostly for comparison work.
+
 ### REFERENCE   
 >[nerf](https://github.com/bmild/nerf)   
 [nerf_pl](https://github.com/kwea123/nerf_pl)
