@@ -29,8 +29,7 @@ during testing, the images, depth images and videos (depends on user preference)
 > - As some feedbacks, I appended some notes when I learn Nerf and the this Pytorch Code. Notes are combinations in English, Chinese characters and sketches, flow charts, focusing on the rays generation and changing between coordinates. Those bothers me much at first. Though I heavily noted the code, it's still not pretty clear for first learn or just going through. That's why I took a look at the code again and made further notes, and it clearly explains what's going on in every single detail, including some tuning that never disclosed at any material I tried. I believe it's good for anyone wants to dive deep. Still, I'm sorry for having no time to have a nice configuration of the notes, but I'd love to make some translation/reorganization/clarification if anyone interested!!!
 
 ### RESULTS FROM UCSD SCENES   
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://github.com/TheSoulOfCorn/nerf_test/blob/2cfb3b8bd501aa2517390f1ef8ead75de9a7afdb/sources/bear_depth.mp4)
-![nerfTomipnerf](https://github.com/TheSoulOfCorn/nerf_test/blob/2cfb3b8bd501aa2517390f1ef8ead75de9a7afdb/sources/bear.mp4)
+![nerfTomipnerf](https://github.com/TheSoulOfCorn/nerf_test/blob/2cfb3b8bd501aa2517390f1ef8ead75de9a7afdb/sources/bear_loss.mp4)
 
 ### FUTURE PLAN
 > experimental tuning options will be configurable, like rays/position options, mostly for comparison work.
