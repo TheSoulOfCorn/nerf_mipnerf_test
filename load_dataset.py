@@ -11,7 +11,7 @@ from ray_utils import get_ray_directions, get_rays, get_ndc_rays
 from colmap_utils import read_cameras_binary, read_images_binary, read_points3d_binary
 
 class LLFFDataset(Dataset):
-    def __init__(self, root_dir, split, img_wh=(504, 378), spheric_poses=False,test_frames=120):
+    def __init__(self, root_dir, split, img_wh=(504, 378), spheric_poses=False,test_frames=120,test_shrink = 1,test_zoom=1.):
         """
         root_dir: processed LLFF data dir
         split: ['train','val','test']
@@ -21,12 +21,17 @@ class LLFFDataset(Dataset):
         """
         self.root_dir = root_dir
         self.split = split
-        self.img_wh = img_wh   # training resolution
+        img_wh_ = (int(img_wh[0]/test_shrink),int(img_wh[1]/test_shrink))
+        self.img_wh = img_wh_   # training resolution
         self.spheric_poses = spheric_poses
         self.val_num = 1 # val image num
         self.define_transforms()    #  self.transform = transforms.ToTensor()  transfer any image to shape c,h,w and normalize
                                     # normalize has must the original type to be unit8
+
+        # for test
         self.test_frames = test_frames  # the number of testing frames generated. specifically 30 at least for a second video
+        self.test_zoom = test_zoom # zoom the test image to simulate near scene
+
         self.read_meta()
 
     def read_meta(self):
@@ -84,7 +89,7 @@ class LLFFDataset(Dataset):
             for j in pts3d[k].image_ids:
                 visibilities[j-1, i] = 1
         # calculate each point's depth w.r.t. each camera
-        # it's the dot product of "points - camera center" and "camera frontal axis"
+        # it's the dot product of "points - camera center" and "camera frontal axis"   # tag1
         # poses[..., 3:4] last col of all shape (25,3,1)
         # poses[..., 2:3] second last col of all shape (25,3,1)
         depths = ((pts_world-poses[..., 3:4])*poses[..., 2:3]).sum(1) # (N_images, N_points)
@@ -115,9 +120,9 @@ class LLFFDataset(Dataset):
         self.poses[..., 3] /= scale_factor
 
         # COLMAP DATA above:
-        # self.focal   f                    for a whole camera
+        # self.focal   f
         # self.image_paths
-        # self.bounds  (n,f)            
+        # self.bounds  (n,f)
         # self.poses   3*4 Rt
 
 
@@ -147,8 +152,8 @@ class LLFFDataset(Dataset):
                 #rays
                 rays_o, rays_d = get_rays(self.directions, c2w) # both (h*w, 3)
 
-                if self.spheric_poses: #360  
-                    near = self.bounds.min()  # use global near,far
+                if self.spheric_poses: #360
+                    near = self.bounds.min()
                     far = self.bounds.max() # may go less (10*near) for a central focus                
                 else:      # need to go NDC for LLFF
                     near, far = 0, 1
@@ -177,7 +182,7 @@ class LLFFDataset(Dataset):
                 radius = 1.1 * self.bounds.min()
                 self.poses_test = create_spheric_poses(radius,n_poses = self.test_frames)
             else:
-                focus_depth = 4   # hardcoded, this is numerically close to the formula
+                focus_depth = 8   # hardcoded, this is numerically close to the formula
                                   # given in the original repo. Mathematically if near=1
                                   # and far=infinity, then this number will converge to 4
                 radii = np.percentile(np.abs(self.poses[..., 3]), 60, axis=0)  #poses: 3*4  camera 2 world trans   25*3*1 -> 3*1  already centered
@@ -204,13 +209,12 @@ class LLFFDataset(Dataset):
                 c2w = torch.FloatTensor(self.poses[self.val_idx])
             else: # test
                 c2w = torch.FloatTensor(self.poses_test[idx])
-                
 
             rays_o, rays_d = get_rays(self.directions, c2w)
             if not self.spheric_poses:
                 near, far = 0, 1
                 rays_o, rays_d = get_ndc_rays(self.img_wh[1], self.img_wh[0],
-                                              self.focal, 1.0, rays_o, rays_d)
+                                              self.focal*self.test_zoom, 1.0, rays_o, rays_d)
             else:
                 near = self.bounds.min()
                 far = min(8 * near, self.bounds.max())

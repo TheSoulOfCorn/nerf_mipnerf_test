@@ -35,6 +35,14 @@ def get_config():
                         help='use disparity depth sampling')
     parser.add_argument('--chunk', type=int, default=32*1024*4,
                         help='chunk size to split the input to avoid OOM')
+
+    # FOR COMPARION-------------------------------------------------------------------------
+    # DO NOT MODIFY BOTH AT SAME TIME
+    parser.add_argument('--test_shrink', type=int, default=1,
+                        help='shrink the test image to simulate far mipmap')
+    parser.add_argument('--test_zoom', type=float, default=1.,
+                        help='zoom the test image to simulate near scene')
+
     
     # SAVE OPTION---------------------------------------------------------------------------
     parser.add_argument('--test_frames',type = int, default=120,

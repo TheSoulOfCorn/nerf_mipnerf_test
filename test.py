@@ -49,12 +49,16 @@ def batched_inference(models, embeddings,
 if __name__ == "__main__":
     args = get_config()
     w, h = args.img_wh
+    w = int(w/args.test_shrink)
+    h = int(h/args.test_shrink)
 
     kwargs = {'split':'test',
               'root_dir': args.root_dir,            # dataset for original
               'img_wh': tuple(args.img_wh),         # output dim
               'spheric_poses':args.spheric_poses,    # 360
-              'test_frames': args.test_frames       # default 120
+              'test_frames': args.test_frames,       # default 120
+              'test_shrink': args.test_shrink,       # default 1
+              'test_zoom': args.test_zoom           # default 1
               }
 
     #load test dataset, only gives c2w and rays !
@@ -110,9 +114,16 @@ if __name__ == "__main__":
     min_depth = np.min(depth_maps)
     max_depth = np.max(depth_maps)
     depth_imgs = (depth_maps - np.min(depth_maps)) / (max(np.max(depth_maps) - np.min(depth_maps), 1e-8))
-    depth_imgs_ = [cv2.applyColorMap((img * 255).astype(np.uint8), cv2.COLORMAP_JET) for img in depth_imgs]
+    for i in tqdm(range(len(dataset))):
+        imageio.imwrite(os.path.join(dir_name, f'depth{i:03d}.png'), depth_imgs[i])
+
+    print("done images.")
 
     #saving videos
     if not args.no_video:
         imageio.mimsave(os.path.join(dir_name, f'{args.scene_name}.mp4'), imgs, fps=30)
-        imageio.mimsave(os.path.join(dir_name, f'{args.scene_name}_depth.mp4'), depth_imgs_, fps=30)
+        imageio.mimsave(os.path.join(dir_name, f'{args.scene_name}_depth.mp4'), depth_imgs, fps=30)
+
+        print("done videos.")
+
+    print("all done.")
