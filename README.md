@@ -68,9 +68,6 @@ https://user-images.githubusercontent.com/68495667/196556796-6f1ba406-10ef-4933-
 ![lib_loss](https://user-images.githubusercontent.com/68495667/196557490-4eeec253-c958-4f03-863f-b2dae2e58a79.png)
 ![lib_psnr](https://user-images.githubusercontent.com/68495667/196557495-53e0c9be-22f9-4f5f-8691-27528af657af.png)
 
-### FUTURE PLAN
-> experimental tuning options will be configurable, like rays/position options, mostly for comparison work.
-
 ### REFERENCE   
 >[nerf](https://github.com/bmild/nerf)   
 [nerf_pl](https://github.com/kwea123/nerf_pl)
