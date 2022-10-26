@@ -1,10 +1,26 @@
-# NERF IMPLEMENTATION for UCSD_CSE274_PROJ
+# NERF & MIPNERF IMPLEMENTATION for UCSD_CSE274_PROJ
+##### By Mohan Li, EMAIL: mol002@ucsd.edu
+
+## FOR MILESTONE
+This part is for the requirements of project milestone for CSE274.   
+- For current results, I have finished most of the work w.r.t. nerf, achieved similar result. Please check:   
+repo files for the implementation codes   
+RESULTS FROM UCSD SCENES (AND FLOWER) part below for a rendered video of UCSD and flower scene    
+COMPARISON BETWEEN ORIGINAL NERF AND NERF THIS REPO part below for a comparison result of training   
+- For next step, I would like to:   
+finish the rest mipnerf part in this repo. Please check the rest parts for the visual and comparison data of mipnerf, I have already finished them all but still working on the organization of codes for repo.
+begin to implement some interesting dynamic nerf projects, and to see if possible to combine the improved mipnerf with the dynamic scenes.   
+There is no change in project directions.
+
+- others   
+I'm sorry that the quality of results may not as ideal. This is mostly because I have to shrink down the training loops/ image size/ sample size for a quick result for debug / limited memory. If time allows I will update more visual pleasant results!
 
 #### before start
-> This is a nerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
-> Hardware: WSL2 on Windows 11, RTX 3070
+> This is a nerf & mipnerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
+> Hardware: WSL2 on Windows 11, RTX 3070. Memory consumption is less than 10 GB using my default setting.    
+> **I'm still organizing the code for mipnerf, but nerf code and all results are all ready!**
 
-## RUNNING
+## RUNNING NERF
 #### create enviroment
 > run   
 `conda env create -f environment.yml`   
@@ -29,7 +45,7 @@ during testing, the images, depth images and videos (depends on user preference)
 > - MUCH CREDIT to the second reference for the usage of torchlightning, and I also learnt a lot from the structure of that work.
 > - As some feedbacks, I appended some notes when I learn Nerf and the this Pytorch Code. Notes are combinations in English, Chinese characters and sketches, flow charts, focusing on the rays generation and changing between coordinates. Those bothers me much at first. Though I heavily noted the code, it's still not pretty clear for first learn or just going through. That's why I took a look at the code again and made further notes, and it clearly explains what's going on in every single detail, including some tuning that never disclosed at any material I tried. I believe it's good for anyone wants to dive deep. Still, I'm sorry for having no time to have a nice configuration of the notes, but I'd love to make some translation/reorganization/clarification if anyone interested!!!
 
-### RESULTS FROM UCSD SCENES   
+## RESULTS FROM UCSD SCENES (AND FLOWER)
 
 https://user-images.githubusercontent.com/68495667/196556112-cec3554d-9a67-4787-ae59-2c1fe5d6454c.mp4   
 
@@ -61,6 +77,7 @@ https://user-images.githubusercontent.com/68495667/196556787-9e501a84-7537-43e9-
 
 https://user-images.githubusercontent.com/68495667/196556796-6f1ba406-10ef-4933-b818-f0b12b116b54.mp4
 
+## COMPARISON BETWEEN ORIGINAL NERF AND NERF THIS REPO
 
 ![bear_loss](https://user-images.githubusercontent.com/68495667/196556886-0af14ead-b2ac-48f5-a818-8602293d3581.png)
 ![bear_psnr](https://user-images.githubusercontent.com/68495667/196556901-d0260101-613d-4f21-9929-5f8ff6434c9c.png)
