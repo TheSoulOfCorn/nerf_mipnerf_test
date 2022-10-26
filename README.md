@@ -23,8 +23,9 @@ during training, the checkpoints will be saved in `./ckpts`, training visualizat
 during testing, the images, depth images and videos (depends on user preference) will be saved in `./results`   
 
 #### others
-> - I have heavy notation everywhere in the code to lessen confusion, and I on purpose removed some features/tuning options for clarity. The remained in the configuration files are those I consider most crucial.   
-> - Unfortunately the code only supports real scene data, as this is a course project after all, I would like to have things focused.   
+> - I have heavy notation everywhere in the code to lessen confusion, and I on purpose removed some features/tuning options for clarity. The remained in the configuration files are those I consider most crucial.
+> - Unfortunately the code only supports real scene data, as this is a course project after all, I would like to have things focused.
+> - The results below are trained with resized images to one eighth of original iphone picture size due to limited memory and time.. Should be much better with less shrank images.
 > - MUCH CREDIT to the second reference for the usage of torchlightning, and I also learnt a lot from the structure of that work.
 > - As some feedbacks, I appended some notes when I learn Nerf and the this Pytorch Code. Notes are combinations in English, Chinese characters and sketches, flow charts, focusing on the rays generation and changing between coordinates. Those bothers me much at first. Though I heavily noted the code, it's still not pretty clear for first learn or just going through. That's why I took a look at the code again and made further notes, and it clearly explains what's going on in every single detail, including some tuning that never disclosed at any material I tried. I believe it's good for anyone wants to dive deep. Still, I'm sorry for having no time to have a nice configuration of the notes, but I'd love to make some translation/reorganization/clarification if anyone interested!!!
 
