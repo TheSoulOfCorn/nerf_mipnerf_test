@@ -8,7 +8,7 @@ repo files for the implementation codes
 RESULTS FROM UCSD SCENES (AND FLOWER) part below for a rendered video of UCSD and flower scene    
 COMPARISON BETWEEN ORIGINAL NERF AND NERF THIS REPO part below for a comparison result of training   
 - For next step, I would like to:   
-finish the rest mipnerf part in this repo. Please check the rest parts for the visual and comparison data of mipnerf, I have already finished them all but still working on the organization of codes for repo.
+finish the rest mipnerf part in this repo. Please check the rest parts for the visual and comparison data of mipnerf, I have already finished them all but still working on the organization of codes for repo.   
 begin to implement some interesting dynamic nerf projects, and to see if possible to combine the improved mipnerf with the dynamic scenes.   
 There is no change in project directions.
 
@@ -85,6 +85,24 @@ https://user-images.githubusercontent.com/68495667/196556796-6f1ba406-10ef-4933-
 ![kitchen_psnr](https://user-images.githubusercontent.com/68495667/196557459-ebe70492-3834-4946-a547-0bd9aa836f1b.png)
 ![lib_loss](https://user-images.githubusercontent.com/68495667/196557490-4eeec253-c958-4f03-863f-b2dae2e58a79.png)
 ![lib_psnr](https://user-images.githubusercontent.com/68495667/196557495-53e0c9be-22f9-4f5f-8691-27528af657af.png)
+
+## COMPARISON OF RESULTS BETWEEN ORIGINAL NERF AND MIPNERF
+
+![Picture9](https://user-images.githubusercontent.com/68495667/198183820-80c82d25-8611-4244-bc39-a5a4c5ad13a8.png)
+
+![Picture5](https://user-images.githubusercontent.com/68495667/198183257-a625c445-4683-4896-929f-8669e1b91d6a.png)
+
+![Picture11](https://user-images.githubusercontent.com/68495667/198184474-88c1d626-e843-4355-9888-ae19d52e818a.png)
+
+![bear_loss](https://user-images.githubusercontent.com/68495667/198184727-a205f110-94e0-4103-9494-203750573bd7.png)
+![bear_psnr](https://user-images.githubusercontent.com/68495667/198184732-f305c4a6-4c3b-414e-b8d9-62deef2689b0.png)
+![kitchen_loss](https://user-images.githubusercontent.com/68495667/198184750-8b369e51-c474-4946-b212-25a2284c6ec9.png)
+![kitchen_psnr](https://user-images.githubusercontent.com/68495667/198184755-4f0acdc9-bf67-4dc3-b157-63b54e802e26.png)
+![library_loss](https://user-images.githubusercontent.com/68495667/198184768-84c194e8-0fdd-43b2-8ed6-4f326fed0ff7.png)
+![library_psnr](https://user-images.githubusercontent.com/68495667/198184771-4cad767b-fdef-4b3a-a9c5-ecfdefafe3d7.png)
+![flower_loss](https://user-images.githubusercontent.com/68495667/198184774-7df89f3d-067b-4d67-8a1a-860dc5ce0fac.png)
+![flower_psnr](https://user-images.githubusercontent.com/68495667/198184777-eda484fc-87ac-4265-85db-f8dd1108bb61.png)
+
 
 ### REFERENCE   
 >[nerf](https://github.com/bmild/nerf)   
