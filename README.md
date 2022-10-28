@@ -21,7 +21,7 @@ I'm sorry that the quality of results may not as ideal. This is mostly because I
 > **I'm still organizing the code for mipnerf, but nerf code and all results are all ready!**
 
 ## RUNNING NERF
-#### create enviroment
+#### create environment
 > run   
 `conda env create -f environment.yml`   
 `pip install -r requirements.txt`   
