@@ -1,7 +1,7 @@
 # NERF & MIPNERF IMPLEMENTATION for UCSD_CSE274_PROJ
 ##### By Mohan Li, EMAIL: mol002@ucsd.edu
 
-## FOR MILESTONE
+## FOR MILESTONE1
 This part is for the requirements of project milestone for CSE274.   
 - For current results, I have finished most of the work w.r.t. nerf, achieved similar result. Please check:   
 repo files for the implementation codes   
@@ -11,14 +11,15 @@ COMPARISON BETWEEN ORIGINAL NERF AND NERF THIS REPO part below for a comparison 
 finish the rest mipnerf part in this repo. Please check the rest parts for the visual and comparison data of mipnerf, I have already finished them all but still working on the organization of codes for repo.   
 begin to implement some interesting dynamic nerf projects, and to see if possible to combine the improved mipnerf with the dynamic scenes.   
 There is no change in project directions.
-
 - others   
 I'm sorry that the quality of results may not as ideal. This is mostly because I have to shrink down the training loops/ image size/ sample size for a quick result for debug / limited memory. If time allows I will update more visual pleasant results!
 
+## FOR MILESTONE2
+- the mipnerf code is updated   11/1
+
 #### before start
 > This is a nerf & mipnerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
-> Hardware: WSL2 on Windows 11, RTX 3070. Memory consumption is less than 10 GB using my default setting.    
-> **I'm still organizing the code for mipnerf, but nerf code and all results are all ready!**
+> Hardware: WSL2 on Windows 11, RTX 3070. Memory consumption is less than 10 GB using my default setting.
 
 ## RUNNING NERF
 #### create environment
@@ -44,6 +45,29 @@ during testing, the images, depth images and videos (depends on user preference)
 > - The results below are trained with resized images to one eighth of original iphone picture size due to limited memory and time.. Should be much better with less shrank images.
 > - MUCH CREDIT to the second reference for the usage of torchlightning, and I also learnt a lot from the structure of that work.
 > - As some feedbacks, I appended some notes when I learn Nerf and the this Pytorch Code. Notes are combinations in English, Chinese characters and sketches, flow charts, focusing on the rays generation and changing between coordinates. Those bothers me much at first. Though I heavily noted the code, it's still not pretty clear for first learn or just going through. That's why I took a look at the code again and made further notes, and it clearly explains what's going on in every single detail, including some tuning that never disclosed at any material I tried. I believe it's good for anyone wants to dive deep. Still, I'm sorry for having no time to have a nice configuration of the notes, but I'd love to make some translation/reorganization/clarification if anyone interested!!!
+
+## RUNNING MIPNERF
+#### create environment
+> identical to the nerf environment setting
+
+#### prepare your data   
+> identical to the nerf environment setting
+
+#### get configuration and run
+> the `config_mipnerf.py` and `config_mipnerf_test.py` provides options for training and testing.
+I didn't create any quick bash files for mipnerf, while it's simple to run. You may do so or just run py file:   
+`python trainMip.py`   
+`python testMip.py`   
+add any args you want!   
+during training, the checkpoints will be saved in `./ckpts_mip`, training visualization tfevents file in `./logs_mip`   
+during testing, the images, depth images and videos (depends on user preference) will be saved in `./results_mip` 
+
+#### others
+> - I actually had not run the organized code here due to some model loading issue, but it should be working fine.
+> - Again, sorry for not having everything pretty! If any misleading or trouble please feel free to contact me.
+> - MUCH THANKS to the reference repo!
+> - LLFF scene is not originally in the paper, you may check some following works like mipnerf 360° for a better result of LLFF.
+> - fact that I will present mipnerf in my class. I update some slides I will be using. Inpired by mipnerf original website. As well, one page of my notes!
 
 ## RESULTS FROM UCSD SCENES (AND FLOWER)
 
@@ -106,4 +130,5 @@ https://user-images.githubusercontent.com/68495667/196556796-6f1ba406-10ef-4933-
 
 ### REFERENCE   
 >[nerf](https://github.com/bmild/nerf)   
-[nerf_pl](https://github.com/kwea123/nerf_pl)
+[nerf_pl](https://github.com/kwea123/nerf_pl)   
+[mipnerf_pl](https://github.com/kwea123/mipnerf_pl)   
