@@ -67,7 +67,7 @@ during testing, the images, depth images and videos (depends on user preference)
 > - Again, sorry for not having everything pretty! If any misleading or trouble please feel free to contact me.
 > - MUCH THANKS to the reference repo!
 > - LLFF scene is not originally in the paper, you may check some following works like mipnerf 360° for a better result of LLFF.
-> - fact that I will present mipnerf in my class. I update some slides I will be using. Inpired by mipnerf original website. As well, one page of my notes!
+> - fact that I will present mipnerf in my class. I update some slides I will be using. Inpired by mipnerf original website. As well, one page of my notes! (JUST FOR INTEREST)
 
 ## RESULTS FROM UCSD SCENES (AND FLOWER)
 
