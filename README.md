@@ -15,7 +15,7 @@ There is no change in project directions.
 I'm sorry that the quality of results may not as ideal. This is mostly because I have to shrink down the training loops/ image size/ sample size for a quick result for debug / limited memory. If time allows I will update more visual pleasant results!
 
 ## FOR MILESTONE2
-- the mipnerf code is updated   11/1
+- 11/1  mipnerf code is updated
 
 #### before start
 > This is a nerf & mipnerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
