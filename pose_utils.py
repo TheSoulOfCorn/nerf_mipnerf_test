@@ -103,7 +103,6 @@ def create_spiral_poses(radii, focus_depth, n_poses=120):
 
     return np.stack(poses_spiral, 0) # (n_poses, 3, 4)
 
-
 def create_spheric_poses(radius, n_poses=120):
     """
     Create circular poses around z axis.
