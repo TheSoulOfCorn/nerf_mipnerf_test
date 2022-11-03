@@ -16,6 +16,7 @@ I'm sorry that the quality of results may not as ideal. This is mostly because I
 
 ## FOR MILESTONE2
 - 11/1  mipnerf code is updated
+- 11/2  updated mipnerf rendered video with zoom-in, sorry for the transition is not very smooth. I basically generate video with two different camera positions. A smooth transition video may be polished with new position generation code later.
 
 #### before start
 > This is a nerf & mipnerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
@@ -126,6 +127,16 @@ https://user-images.githubusercontent.com/68495667/196556796-6f1ba406-10ef-4933-
 ![library_psnr](https://user-images.githubusercontent.com/68495667/198184771-4cad767b-fdef-4b3a-a9c5-ecfdefafe3d7.png)
 ![flower_loss](https://user-images.githubusercontent.com/68495667/198184774-7df89f3d-067b-4d67-8a1a-860dc5ce0fac.png)
 ![flower_psnr](https://user-images.githubusercontent.com/68495667/198184777-eda484fc-87ac-4265-85db-f8dd1108bb61.png)
+
+## MIPNERF VIDEO WITH ZOOM-IN
+
+
+https://user-images.githubusercontent.com/68495667/199646357-e7e964fc-a10b-4826-84d1-084720d5008b.mp4
+
+https://user-images.githubusercontent.com/68495667/199646364-0e851eb1-b176-4e8c-ad1a-63cf13df2d46.mp4
+
+https://user-images.githubusercontent.com/68495667/199646370-189294c9-6b35-4653-9139-56cee8893994.mp4
+
 
 
 ### REFERENCE   
