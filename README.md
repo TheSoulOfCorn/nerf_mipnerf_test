@@ -16,7 +16,9 @@ I'm sorry that the quality of results may not as ideal. This is mostly because I
 
 ## FOR MILESTONE2
 - 11/1  mipnerf code is updated
-- 11/2  updated mipnerf rendered video with zoom-in, sorry for the transition is not very smooth. I basically generate video with two different camera positions. A smooth transition video may be polished with new position generation code later.
+- 11/2  updated mipnerf rendered video with zoom-in, sorry for the transition is not very smooth. I basically generate video with two different camera positions. A smooth transition video may be polished with new position generation code later.   
+- others (slight change of presentation logic)   
+I would like to show my own nerf/mipnerf results/comparisons in the presentation of mip-nerf paper. I will not redo that in my final project presentation (though this is part of it). Instead I will concentrate on introduction of the neural scene flow fields.
 
 #### before start
 > This is a nerf & mipnerf implementation based on torch/torchlightning, mostly only supporting real scene (LLFF and 360° data).   
